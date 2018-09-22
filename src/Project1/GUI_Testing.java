@@ -12,7 +12,7 @@ package Project1;
 	import javax.swing.JPanel;
 
 
-	public class Gui extends JFrame implements ActionListener {
+	public class GUI_Testing extends JFrame implements ActionListener {
 		/**
 		 * 
 		 */
@@ -27,7 +27,7 @@ package Project1;
 		private JPanel _bar;
 		
 		private static final long serialVersionUID = 1L;
-		public Gui() {
+		public GUI_Testing() {
 			setLayout(new GridLayout(2,2));
 			add(_buttons = new JPanel());
 			add(_bar = new JPanel());
