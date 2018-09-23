@@ -2,14 +2,18 @@ import alpha_vantage
 from alpha_vantage.timeseries import TimeSeries
 import pprint
 import json
-import urllib, requests
+import urllib, requests, ssl
 
 
 ### EXAMPLE DATA COLLECTION METHODS
 class DataCollector:
 	
 	def get_json(self, url, filename):
-		response = urllib.urlopen(url)
+		ctx = ssl.create_default_context()
+		ctx.check_hostname = False
+		ctx.verify_mode = ssl.CERT_NONE
+
+		response = urllib.urlopen(url, context=ctx)
 		data = json.loads(response.read())
 		with open("data_files/" + filename + ".meta_data.json", "w") as f:
 			json.dump(data, f)
@@ -22,7 +26,7 @@ class DataCollector:
 				"datatype": "json",
 				"apikey": 'D1OG0BNI06KWU3FO',
 			}
-			response = requests.get(url, data)
+			response = requests.get(url, data, verify=False)
 			data = response.json()
 			with open("data_files/" + symbol + "_ts_data.json", "w") as f:
 				json.dump(data, f)
