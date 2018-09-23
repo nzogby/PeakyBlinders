@@ -59,7 +59,7 @@ package Project1;
 		      new GUI_Testing();
 		      
 		   }
-		@Override
+		@Override 
 		public void actionPerformed(ActionEvent evt) {
 			// TODO Auto-generated method stub	}
 		SearchFrame = new JFrame("Searched Stock");

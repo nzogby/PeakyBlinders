@@ -13,7 +13,7 @@ package Project1;
 
 
 	public class Gui extends JFrame implements ActionListener {
-		/**
+		/** 
 		 * 
 		 */
 		private Label stocks;
