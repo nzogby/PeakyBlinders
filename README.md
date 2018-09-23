@@ -3,6 +3,8 @@
 
 ### DEPENDENCIES: ###
 
+make >= 4.1
+
 java >= 8.0
 
 
