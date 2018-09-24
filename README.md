@@ -17,4 +17,6 @@ alpha vantage
 alpha vantage:
 	pip install alpha_vantage
 
-
+### INSTALLATION ###
+make
+java -jar gui.jar
