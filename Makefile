@@ -7,6 +7,6 @@ test:
 	mkdir data/data_files/types data/data_files/storage
 	cd data && python test.py
 clean:
-	rm -f meta_data.json data/collect.pyc data/test.pyc
+	rm -f  data/collect.pyc data/test.pyc data/data_files/index.json
 	cd data/data_files && rm -rf types storage
 
