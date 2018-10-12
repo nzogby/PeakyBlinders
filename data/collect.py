@@ -8,20 +8,28 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 ### Data Collection ###
 
 '''
+
     Data Collection is done by reading in a manifest file
-        followed by making GET requests to source.
+    followed by making GET requests to source.
 
     Once data is scraped and stored, we then build out a file for each stock sector.
-        These are all stored in data_files/types.
-'''
-
-### IMPORTANT FILE LOCATIONS ###
+    These are all stored in data_files/types.
 
 '''
 
-STOCK JSONS: PeakyBlinders/data/data_files/storage
-STOCK TYPE JSONS: PeakyBlinders/data/data_files/types
-INDEX FILE: PeakyBlinders/data/data_files/
+### IMPORTANT FILE LOCATIONS/INFO ###
+
+'''
+
+Locations:
+
+    STOCK JSONS: PeakyBlinders/data/data_files/storage
+    STOCK TYPE JSONS: PeakyBlinders/data/data_files/types
+    INDEX FILE: PeakyBlinders/data/data_files/
+
+INFO:
+    individual stock filename convention: <stock_name>_data.json
+    stock type filename convention: <stock_type>.json
 
 '''
 class DataCollector:
@@ -50,7 +58,7 @@ class DataCollector:
 
             if data['company']['sector'] not in self.sectors:
                 self.sectors.append(data['company']['sector'])
-            with open("data_files/storage/" + symbol + "_ts_data.json", "w") as f:
+            with open("data_files/storage/" + symbol + "_data.json", "w") as f:
 		json.dump(data, f)
 
         def build_index_file(self):
@@ -60,9 +68,18 @@ class DataCollector:
         def build_sector_files(self):
             for sector in self.sectors:
                 data = []
-                print "sector: " + sector
                 for stock in self.index:
                     if self.index[stock]['company']['sector'] == sector:
-                        data.append(stock)
+                        data.append(self.index[stock])
                 with open("data_files/types/" + sector.replace(" ", "_") + ".json", "w") as f:
                     json.dump(data, f)
+
+        def print_state(self):
+            print "DATA EXTRACTION COMPLETE, APPLICATION INFORMATION STATE: "
+            for sector in self.sectors:
+                print "...... SECTOR: " + sector + " ......"
+                with open ("data_files/types/" + sector.replace(" ", "_") + ".json", "r") as f:
+                    stocks = json.load(f)
+                for stock in stocks:
+                    print stock['company']['companyName']
+            
