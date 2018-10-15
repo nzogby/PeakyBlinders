@@ -24,10 +24,13 @@ import javax.swing.border.Border;
 public class Multipanels implements ActionListener{
 
 		JFrame window = new JFrame("Stock Predictor");
-		JPanel panel_01= new JPanel();
-		JPanel panel_02 = new JPanel();
-		JPanel panel_03= new JPanel();
+		JPanel leftPanel = new JPanel();
+		
+		JPanel _menuPanel= new JPanel(); // bottom panel
+		JPanel _searchPanel = new JPanel(); // left panel
+		JPanel _stockPanel= new JPanel(); // right panel
 		JButton click= new JButton("Menu");
+		
 		JLabel searchtext = new JLabel("Search Bar");
 		JLabel stockpanel = new JLabel ("Stock Panel");
 		JLabel Sectors1 = new JLabel("Sectors");
@@ -39,7 +42,7 @@ public class Multipanels implements ActionListener{
 		
 
 
-		JTextField editArea = new JTextField("Search for your stock",14);
+		JTextField editArea = new JTextField("Search for your stock",14); // text box
 	//	editArea.addActionListener(new ActionListener());
 	
 		
@@ -47,32 +50,39 @@ public class Multipanels implements ActionListener{
 		
 		Multipanels(){
 		
-			panel_01.setBackground(Color.DARK_GRAY);
-			panel_01.add(M);
-			panel_03.add((Sectors1),BorderLayout.WEST);
-			stockpanel.setForeground(Color.blue);
-			panel_01.add(stockpanel);
-			panel_02.add(searchtext);
+			_menuPanel.setBackground(Color.DARK_GRAY); // set bottom panel color to dary gray
+			_menuPanel.add(M); // add button that says "Panel"
+			_stockPanel.add((Sectors1),BorderLayout.WEST); // add jlabel saying "Sectors"
+			stockpanel.setForeground(Color.blue); // set jlabel saying "Stock Panel" to color blue
+			_menuPanel.add(stockpanel); // add jlabel saying "Stock Panel" to bottom panel
+			_searchPanel.add(searchtext); // add jlabel saying "Search Bar" to left panel
 			
-			panel_02.setBackground(Color.BLUE);
-			panel_03.setBackground(Color.GREEN);
-			window.add(panel_03,BorderLayout.EAST);
-			window.add(panel_01,BorderLayout.PAGE_END);
-			window.add(panel_02, BorderLayout.WEST);
-			panel_03.add(J,BorderLayout.EAST);
+			_searchPanel.setBackground(Color.BLUE); // give left panel a blue background
+			_stockPanel.setBackground(Color.GREEN); // give right panel a green background
+			window.add(_stockPanel, BorderLayout.EAST); // add right panel
 			
-			panel_02.add(editArea);
-			K.setSize(4, 5);
+			leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+			leftPanel.add(_searchPanel);
+			leftPanel.add(_menuPanel);
+			leftPanel.setVisible(true);
+			
+			window.add(leftPanel, BorderLayout.WEST);
+			_stockPanel.add(J,BorderLayout.EAST); // add button to right panel saying "Sector 1"
+			
+			_searchPanel.add(editArea); // give left panel a text box
+			K.setSize(4, 5); // set size of button saying "Sector 2"
 			K.setAlignmentX(Component.RIGHT_ALIGNMENT);
-			panel_03.add(K,BorderLayout.LINE_START);
-			panel_03.add(L,BorderLayout.CENTER);
-			window.setSize(600,600);
+			_stockPanel.add(K,BorderLayout.LINE_START); // add button saying "Sector 2"
+			_stockPanel.add(L,BorderLayout.CENTER); // add button saying "Sector 3"
+			
+			window.setSize(600,600); // set size of jframe
 			window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			window.setVisible(true);
-			window.setResizable(false);
-			BackGroundImage b = new BackGroundImage();
-			window.add(b);
-			editArea.addMouseListener(new MouseAdapter() {
+			window.setResizable(false); // not resizable
+			//BackGroundImage b = new BackGroundImage();
+			//window.add(b);
+			
+			editArea.addMouseListener(new MouseAdapter() { // add MouseListener to the text box that clears the text when you click on it
 			    @Override
 			    public void mouseClicked(MouseEvent e) {
 			        editArea.setText("");
@@ -92,4 +102,3 @@ public class Multipanels implements ActionListener{
 			
 		}
 }
-		
