@@ -28,24 +28,23 @@ public class StocksScreen extends JPanel {
 	
 
 	private TextField _searchbar;
-
+	private JLabel _sectorsLabel;
+	
 	private String _searchedCompany;
-
 	private JLabel _companyLabel;
 
 	
 
 	public StocksScreen() {
 
-		setBorder(BorderFactory.createLineBorder(Color.black));
+		//setBorder(BorderFactory.createLineBorder(Color.black));
+		setBackground(Color.GREEN);
 		
 		setVisible(true);
 
-		setLayout(new GridLayout(3,3));
-
 	}
 
-	public void setSearchedCompany(String searchedCompany) {
+	public void displayCompanyNames(String searchedCompany) {
 		
 		_searchedCompany = searchedCompany;
 		_companyLabel = new JLabel(_searchedCompany, JLabel.CENTER);

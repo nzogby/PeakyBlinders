@@ -29,16 +29,21 @@ public class MenuScreen extends JPanel {
 
 		private JLabel _menuLabel;
 
-	
-
 		public MenuScreen() {
 
 			
 
-			_menuLabel = new JLabel("Menu that does nothing");
+			//
+			setBackground(Color.GRAY);
+			
+			
+			_menuLabel = new JLabel("Menu");
+			_menuLabel.setForeground(Color.blue);
 			add(_menuLabel);
+			
+			setSize(300,300);
 			setVisible(true);
-			setBorder(BorderFactory.createLineBorder(Color.black));
+			//setBorder(BorderFactory.createLineBorder(Color.black));
 
 		}
 
