@@ -11,6 +11,7 @@ import java.awt.*;
 	import java.net.URI;
 
 	import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -20,10 +21,11 @@ import javax.swing.JButton;
 	import javax.swing.JLabel;
 
 	import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 
 
-public class StocksScreen extends JPanel {
+public class StocksScreen extends JPanel{
 
 	
 
@@ -31,28 +33,31 @@ public class StocksScreen extends JPanel {
 	private JLabel _sectorsLabel;
 	
 	private String _searchedCompany;
-	private JLabel _companyLabel;
-
-	
 
 	public StocksScreen() {
 
 		//setBorder(BorderFactory.createLineBorder(Color.black));
 		setBackground(Color.GREEN);
-		
 		setVisible(true);
 
 	}
 
-	public void displayCompanyNames(String searchedCompany) {
+	public void displayCompanyNames(ArrayList<ArrayList<String>> companyList) {
 		
-		_searchedCompany = searchedCompany;
-		_companyLabel = new JLabel(_searchedCompany, JLabel.CENTER);
-		add(_companyLabel);
+		for(int i = 0; i < companyList.size(); i++) {
+		
+			JLabel companyLabel;
+			String companyName = companyList.get(i).get(0);
+			String companyPrice = companyList.get(i).get(1);
+			
+			companyLabel = new JLabel(companyName + ", " + companyPrice, JLabel.CENTER);
+			add(companyLabel);
 
-		_companyLabel.setVisible(true);
-		_companyLabel.setFont(new Font("Monospaced", Font.BOLD, 16));
-
+			companyLabel.setVisible(true);
+			companyLabel.setFont(new Font("Monospaced", Font.BOLD, 16));
+			
+		}
+		
 		repaint();
 		
 	}

@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -28,7 +29,7 @@ public class Multipanels implements ActionListener{
 		
 		JPanel _menuPanel= new MenuScreen(); // bottom panel
 		JPanel _searchPanel = new JPanel(); // left panel
-		JPanel _stockPanel= new StocksScreen(); // right panel
+		StocksScreen _stockPanel= new StocksScreen(); // right panel
 		JButton click= new JButton("Menu");
 		
 		JLabel searchtext = new JLabel("Stock Search Bar");
@@ -42,7 +43,7 @@ public class Multipanels implements ActionListener{
 		
 
 
-		JTextField editArea = new JTextField("Search for your stock", 14); // text box
+		JTextField editArea = new JTextField("Search for your stock",14); // text box
 	//	editArea.addActionListener(new ActionListener());
 	
 		
