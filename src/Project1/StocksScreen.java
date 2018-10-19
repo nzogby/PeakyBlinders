@@ -2,46 +2,58 @@ package Project1;
 
 
 
-import java.awt.*;
-
-	import java.awt.event.*;
-
-	import java.io.IOException;
-
-	import java.net.URI;
-
-	import java.net.URISyntaxException;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
-
-	import javax.swing.JFrame;
-
-	import javax.swing.JLabel;
-
-	import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 
 public class StocksScreen extends JPanel{
 
+	private JPanel _topLayer;
+	private JLabel Sectors1;
 	
-
-	private TextField _searchbar;
-	private JLabel _sectorsLabel;
-	
-	private String _searchedCompany;
-
 	public StocksScreen() {
 
 		//setBorder(BorderFactory.createLineBorder(Color.black));
-		setBackground(Color.GREEN);
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setBackground(new Color(0, 153, 0));
+		initializeTopLayer();
 		setVisible(true);
 
 	}
 
+	public void initializeTopLayer() {
+		
+		Sectors1 = new JLabel("  Sectors:   ");
+		
+		_topLayer = new JPanel();
+		_topLayer.setLayout(new BoxLayout(_topLayer, BoxLayout.X_AXIS));
+		_topLayer.add((Sectors1),BorderLayout.WEST);
+		
+		JButton J = new JButton("Sector 1");
+		_topLayer.add(J,BorderLayout.EAST);
+		JButton K = new JButton("Sector 2");
+		K.setSize(4, 5); // set size of button saying "Sector 2"
+		K.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		_topLayer.add(K,BorderLayout.LINE_START);
+		JButton L = new JButton("Sector 3");
+		_topLayer.add(L,BorderLayout.CENTER);
+		
+		_topLayer.setBackground(new Color(0, 153, 0));
+		_topLayer.setVisible(true);
+		
+		add(_topLayer);
+		
+	}
+	
 	public void displayCompanyNames(ArrayList<ArrayList<String>> companyList) {
 		
 		for(int i = 0; i < companyList.size(); i++) {
