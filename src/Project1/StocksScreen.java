@@ -1,7 +1,5 @@
 package Project1;
 
-
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -12,12 +10,12 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-
+import javax.swing.JScrollPane;
 
 public class StocksScreen extends JPanel{
 
 	private JPanel _topLayer;
+	private JPanel _scrollPanel;
 	private JLabel Sectors1;
 	
 	public StocksScreen() {
@@ -25,7 +23,14 @@ public class StocksScreen extends JPanel{
 		//setBorder(BorderFactory.createLineBorder(Color.black));
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBackground(new Color(0, 153, 0));
+		
+		_scrollPanel = new JPanel();
+		_scrollPanel.setLayout(new BoxLayout(_scrollPanel, BoxLayout.Y_AXIS));
+		_scrollPanel.setBackground(new Color(0, 153, 0));
+		JScrollPane scrollPane = new JScrollPane(_scrollPanel);
+		
 		initializeTopLayer();
+		add(scrollPane);
 		setVisible(true);
 
 	}
@@ -63,7 +68,7 @@ public class StocksScreen extends JPanel{
 			String companyPrice = companyList.get(i).get(1);
 			
 			companyLabel = new JLabel(companyName + ", " + companyPrice, JLabel.CENTER);
-			add(companyLabel);
+			_scrollPanel.add(companyLabel);
 
 			companyLabel.setVisible(true);
 			companyLabel.setFont(new Font("Monospaced", Font.BOLD, 16));
