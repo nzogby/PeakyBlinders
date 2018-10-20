@@ -1,59 +1,80 @@
 package Project1;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.util.ArrayList;
 
-
-import java.awt.*;
-
-	import java.awt.event.*;
-
-	import java.io.IOException;
-
-	import java.net.URI;
-
-	import java.net.URISyntaxException;
-
-import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
-	import javax.swing.JFrame;
+public class StocksScreen extends JPanel{
 
-	import javax.swing.JLabel;
-
-	import javax.swing.JPanel;
-
-
-
-public class StocksScreen extends JPanel {
-
+	private JPanel _topLayer;
+	private JPanel _scrollPanel;
+	private JLabel Sectors1;
 	
-
-	private TextField _searchbar;
-
-	private String _searchedCompany;
-
-	private JLabel _companyLabel;
-
-	
-
 	public StocksScreen() {
 
-		setBorder(BorderFactory.createLineBorder(Color.black));
+		//setBorder(BorderFactory.createLineBorder(Color.black));
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setBackground(new Color(0, 153, 0));
 		
+		_scrollPanel = new JPanel();
+		_scrollPanel.setLayout(new BoxLayout(_scrollPanel, BoxLayout.Y_AXIS));
+		_scrollPanel.setBackground(new Color(0, 153, 0));
+		JScrollPane scrollPane = new JScrollPane(_scrollPanel);
+		
+		initializeTopLayer();
+		add(scrollPane);
 		setVisible(true);
-
-		setLayout(new GridLayout(3,3));
 
 	}
 
-	public void setSearchedCompany(String searchedCompany) {
+	public void initializeTopLayer() {
 		
-		_searchedCompany = searchedCompany;
-		_companyLabel = new JLabel(_searchedCompany, JLabel.CENTER);
-		add(_companyLabel);
+		Sectors1 = new JLabel("  Sectors:   ");
+		
+		_topLayer = new JPanel();
+		_topLayer.setLayout(new BoxLayout(_topLayer, BoxLayout.X_AXIS));
+		_topLayer.add((Sectors1),BorderLayout.WEST);
+		
+		JButton J = new JButton("Sector 1");
+		_topLayer.add(J,BorderLayout.EAST);
+		JButton K = new JButton("Sector 2");
+		K.setSize(4, 5); // set size of button saying "Sector 2"
+		K.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		_topLayer.add(K,BorderLayout.LINE_START);
+		JButton L = new JButton("Sector 3");
+		_topLayer.add(L,BorderLayout.CENTER);
+		
+		_topLayer.setBackground(new Color(0, 153, 0));
+		_topLayer.setVisible(true);
+		
+		add(_topLayer);
+		
+	}
+	
+	public void displayCompanyNames(ArrayList<ArrayList<String>> companyList) {
+		
+		for(int i = 0; i < companyList.size(); i++) {
+		
+			JLabel companyLabel;
+			String companyName = companyList.get(i).get(0);
+			String companyPrice = companyList.get(i).get(1);
+			
+			companyLabel = new JLabel(companyName + ", " + companyPrice, JLabel.CENTER);
+			_scrollPanel.add(companyLabel);
 
-		_companyLabel.setVisible(true);
-		_companyLabel.setFont(new Font("Monospaced", Font.BOLD, 16));
-
+			companyLabel.setVisible(true);
+			companyLabel.setFont(new Font("Monospaced", Font.BOLD, 16));
+			
+		}
+		
 		repaint();
 		
 	}

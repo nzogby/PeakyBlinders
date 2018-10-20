@@ -24,7 +24,7 @@ public class BackendInterface {
 	private HashMap<String, File> grab_type_files() {
 		HashMap<String, File> type_files = new HashMap<String, File>();
 		for (File file : (new File(TYPE_FILES_PATH).listFiles())){
-			type_files.put(file.getName().replace("_", " ").replace(".json", ""), file);
+			type_files.put(file.getName().replace("_", " ").replace(".json", ""), TYPE_FILES_PATH + file);
 		}
 		return type_files;
 	}
