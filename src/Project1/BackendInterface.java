@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import com.eclipsesource.json.*;
 //import com.google.gson;
 /*
  * Use this Class to interface with the backend stock data
@@ -43,11 +44,34 @@ public class BackendInterface {
 		return type_list;
 	}
 
+ public Arraylist<Arraylist<String>>  buttonReturn(String type){
+  JsonObject json = getJsonFile(_type_files.get(type));
+  Iterator comp = json.keys();
+  Arraylist<Arraylist<String>> sector = new Arraylist<Arraylist<String>>();
+  while(comp.hasNext()){
+   Object key = comp.next();
+   int value = json.getJsonObject(key).get(price);
+   String name = json.getJsonObject(key).get(company).get(companyName);
+   Arraylist<String> companyInfo = new Arraylist<String>();
+   companyInfo.add(name); companyInfo.add(""+value);
+   sector.add(companyInfo);
+  }
+  return sector;
+ }
+
+	public static JsonObject getJsonFile(File type){
+		String jsonString = "";
+		JsonObject JObj = Json.parse(jsonString).asObject();
+		return JObj;
+		}
+
 	/*public ArrayList<String> grab_stocknames_from_type(String type){
 		File type_file = _type_files.get(type);
 		ArrayList<String> stock_names = new ArrayList<String>();
 
-	}	*/
+	}
+*/
+	
 }
 
 
