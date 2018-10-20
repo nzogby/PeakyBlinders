@@ -37,19 +37,21 @@ public class StocksScreen extends JPanel{
 
 	public void initializeTopLayer() {
 		
-		Sectors1 = new JLabel("  Sectors:   ");
+		Sectors1 = new JLabel("Sectors:");
 		
 		_topLayer = new JPanel();
 		_topLayer.setLayout(new BoxLayout(_topLayer, BoxLayout.X_AXIS));
 		_topLayer.add((Sectors1),BorderLayout.WEST);
 		
-		JButton J = new JButton("Sector 1");
+		JButton J = new JButton("Basic Materials");
 		_topLayer.add(J,BorderLayout.EAST);
-		JButton K = new JButton("Sector 2");
+		
+		JButton K = new JButton("Energy");
 		K.setSize(4, 5); // set size of button saying "Sector 2"
 		K.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		_topLayer.add(K,BorderLayout.LINE_START);
-		JButton L = new JButton("Sector 3");
+		
+		JButton L = new JButton("Tech");
 		_topLayer.add(L,BorderLayout.CENTER);
 		
 		_topLayer.setBackground(new Color(0, 153, 0));
