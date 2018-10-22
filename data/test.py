@@ -50,4 +50,5 @@ class DataCollectionTest(unittest.TestCase):
 ### END menu_bar UNIT TESTS ###
 
 if __name__ == '__main__':
+	print "RUNNING UNIT TESTS FOR FEATURE: menu_1"
 	unittest.main()
