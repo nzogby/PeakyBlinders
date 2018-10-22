@@ -43,16 +43,19 @@ public class StocksScreen extends JPanel{
 		_topLayer.setLayout(new BoxLayout(_topLayer, BoxLayout.X_AXIS));
 		_topLayer.add((Sectors1),BorderLayout.WEST);
 		
-		JButton J = new JButton("Basic Materials");
-		_topLayer.add(J,BorderLayout.EAST);
+		JButton materialsButton = new JButton("Basic Materials");
+		materialsButton.addActionListener(new SectorListener(materialsButton.getText(), _scrollPanel));
+		_topLayer.add(materialsButton, BorderLayout.EAST);
 		
-		JButton K = new JButton("Energy");
-		K.setSize(4, 5); // set size of button saying "Sector 2"
-		K.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		_topLayer.add(K,BorderLayout.LINE_START);
+		JButton energyButton = new JButton("Energy");
+		energyButton.setSize(4, 5); // set size of button saying "Sector 2"
+		energyButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		energyButton.addActionListener(new SectorListener(energyButton.getText(), _scrollPanel));
+		_topLayer.add(energyButton, BorderLayout.LINE_START);
 		
-		JButton L = new JButton("Tech");
-		_topLayer.add(L,BorderLayout.CENTER);
+		JButton techButton = new JButton("Tech");
+		techButton.addActionListener(new SectorListener(techButton.getText(), _scrollPanel));
+		_topLayer.add(techButton, BorderLayout.CENTER);
 		
 		_topLayer.setBackground(new Color(0, 153, 0));
 		_topLayer.setVisible(true);
