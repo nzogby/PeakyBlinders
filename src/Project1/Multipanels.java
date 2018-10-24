@@ -5,20 +5,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Multipanels implements ActionListener{
 
 		JFrame _window = new JFrame("Stock Predictor");
 		JPanel _leftPanel = new JPanel();
 		
-		JPanel _menuPanel = new MenuScreen(); // bottom panel
-		JPanel _searchPanel = new SearchScreen(); // left panel
+		MenuScreen _menuPanel = new MenuScreen(); // bottom panel
+		SearchScreen _searchPanel = new SearchScreen(); // left panel
 		StocksScreen _stockPanel = new StocksScreen(); // right panel
 		
 		Multipanels(){
-		
+			
 			_window.add(_stockPanel, BorderLayout.EAST); // add right panel
 			
 			_leftPanel.setLayout(new BoxLayout(_leftPanel, BoxLayout.Y_AXIS));
@@ -32,9 +35,24 @@ public class Multipanels implements ActionListener{
 			_window.setVisible(true);
 			_window.setResizable(false); // not resizable
 			
+			
+			JButton searchButton = _searchPanel.getSearchButton();
+			searchButton.addActionListener(this);
+			
 		}		
 		
 		@Override
-		public void actionPerformed(ActionEvent arg0) {}
+		public void actionPerformed(ActionEvent arg0) {
+			
+			JTextField searchBox = _searchPanel.getSearchBox();
+			String searchText = searchBox.getText();
+			JLabel searchedLabel = new JLabel(searchText);
+
+			_menuPanel.getPanel().removeAll();
+			_menuPanel.getPanel().add(searchedLabel, BorderLayout.SOUTH);
+			_menuPanel.getPanel().revalidate();
+			_menuPanel.getPanel().repaint();
+			
+		}
 		
 }
