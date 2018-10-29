@@ -3,9 +3,6 @@ package Project1;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Font;
-import java.util.ArrayList;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -64,24 +61,4 @@ public class StocksScreen extends JPanel{
 		
 	}
 	
-	public void displayCompanyNames(ArrayList<ArrayList<String>> companyList) {
-		
-		for(int i = 0; i < companyList.size(); i++) {
-		
-			JLabel companyLabel;
-			String companyName = companyList.get(i).get(0);
-			String companyPrice = companyList.get(i).get(1);
-			
-			companyLabel = new JLabel(companyName + ", " + companyPrice, JLabel.CENTER);
-			_scrollPanel.add(companyLabel);
-
-			companyLabel.setVisible(true);
-			companyLabel.setFont(new Font("Monospaced", Font.BOLD, 16));
-			
-		}
-		
-		repaint();
-		
-	}
-
 }

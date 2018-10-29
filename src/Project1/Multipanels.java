@@ -16,13 +16,13 @@ public class Multipanels implements ActionListener{
 		JFrame _window = new JFrame("Stock Predictor");
 		JPanel _leftPanel = new JPanel();
 		
-		MenuScreen _menuPanel = new MenuScreen(); // bottom panel
-		SearchScreen _searchPanel = new SearchScreen(); // left panel
-		StocksScreen _stockPanel = new StocksScreen(); // right panel
+		MenuScreen _menuPanel = new MenuScreen();
+		SearchScreen _searchPanel = new SearchScreen();
+		StocksScreen _stockPanel = new StocksScreen();
 		
 		Multipanels(){
 			
-			_window.add(_stockPanel, BorderLayout.EAST); // add right panel
+			_window.add(_stockPanel, BorderLayout.EAST);
 			
 			_leftPanel.setLayout(new BoxLayout(_leftPanel, BoxLayout.Y_AXIS));
 			_leftPanel.add(_searchPanel);
@@ -30,10 +30,10 @@ public class Multipanels implements ActionListener{
 			_leftPanel.setVisible(true);
 			_window.add(_leftPanel, BorderLayout.WEST);
 			
-			_window.setSize(600,600); // set size of jframe
+			_window.setSize(600,600);
 			_window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			_window.setVisible(true);
-			_window.setResizable(false); // not resizable
+			_window.setResizable(false);
 			
 			
 			JButton searchButton = _searchPanel.getSearchButton();
