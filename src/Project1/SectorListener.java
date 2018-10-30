@@ -114,6 +114,146 @@ public class SectorListener implements ActionListener{
 		tempList.add("");
 		_technology.add(tempList);
 		
+		tempList = new ArrayList<String>(2);
+		tempList.add("National Fuel Gas Co");
+		tempList.add("");
+		_energy.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("National Grid");
+		tempList.add("");
+		_energy.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("NOCO");
+		tempList.add("");
+		_energy.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("New Wave");
+		tempList.add("");
+		_energy.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Great Northern Iron Ore Properties");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Calumet Specialty Products Partners");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Martin Midstream Partners");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("BreitBurn Energy");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("EV Energy Partners LP");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Ferrellgas Partners LP");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Copano Energy LLC");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Exterran Partners");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Companhia Siderurgica Nacional");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Regency Energy Partners LP");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Energy Transfer Partners");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Penn Virginia Resource Partners");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Enbridge Energy Partners LP");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Transmontaigne Partners L.P.");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("NuStar Energy LP");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Kinder Morgan Energy Partners LP");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("MarkWest Energy Partners LP");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Holly Energy Partners L.P.");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Natural Resource Partners LP");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Plains All American Pipeline LP");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("EASTMAN CHEMICAL CO");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Verso Corp");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Nucor Corporation");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
+		tempList = new ArrayList<String>(2);
+		tempList.add("Steel Dynamics Inc.");
+		tempList.add("");
+		_basicMaterials.add(tempList);
+		
 	}
 
 }
