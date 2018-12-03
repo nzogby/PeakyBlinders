@@ -75,13 +75,13 @@ public class BackendInterface {
 	public ArrayList<String> searching(String company){
 		ArrayList<String> list = new ArrayList<String>();
 		JSONParser parser = new JSONParser();
-		FileReader fil = new FileReader(index_file+".json");
+		FileReader fil = new FileReader(_index_file+".json");
 		JSONArray a = (JSONArray) parser.parse(fil);		
 		for(Object o : a){
 			JSONObject jo = (JSONObject) o;
-			if(jo.get(companyName)== company || jo.get(symbol)==company){
+			if(jo.get("companyName").equals(company) || jo.get("symbol").equals(company)){
 				ArrayList<String> comp = new ArrayList<String>();
-				for(Object key: jo.get(key)){
+				for(Object key: jo.keySet()){
 					comp.add((String) jo.get(key));
 				}
 				return comp;
