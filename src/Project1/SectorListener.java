@@ -18,16 +18,26 @@ public class SectorListener implements ActionListener{
 	private ArrayList<ArrayList<String>> _energy;
 	private ArrayList<ArrayList<String>> _technology;
 	
+	private BackendInterface _backendInterface;
+	
 	public SectorListener(String sectorName, JPanel scrollPanel) {
 		
 		_sectorName = sectorName;
 		_scrollPanel = scrollPanel;
 		
-		_basicMaterials = new ArrayList<ArrayList<String>>();
+		/*_basicMaterials = new ArrayList<ArrayList<String>>();
 		_energy = new ArrayList<ArrayList<String>>();
-		_technology = new ArrayList<ArrayList<String>>();
+		_technology = new ArrayList<ArrayList<String>>();*/
 		
-		setUpCompanyLists();
+		_backendInterface = new BackendInterface();
+		
+		_basicMaterials = _backendInterface.buttonReturn("Basic_Materials");
+		_energy = _backendInterface.buttonReturn("Energy");
+		_technology = _backendInterface.buttonReturn("Technology");
+		
+		//System.out.println(_energy.get(0));
+				
+		//setUpCompanyLists();
 		
 	}
 	

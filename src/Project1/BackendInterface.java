@@ -29,8 +29,8 @@ public class BackendInterface {
 	// function which gathers stock types
 	private HashMap<String, File> grab_type_files() {
 		HashMap<String, File> type_files = new HashMap<String, File>();
-		for (File file : (new File(TYPE_FILES_PATH).listFiles())){
-			type_files.put(file.getName().replace("_", " ").replace(".json", ""),TYPE_FILES_PATH + file);
+		for (File file : (new File("data/data_files/types"/*TYPE_FILES_PATH*/).listFiles())){
+			type_files.put(file.getName().replace("_", " ").replace(".json", ""), file);
 		}
 		return type_files;
 	}
@@ -49,15 +49,15 @@ public class BackendInterface {
 		return type_list;
 	}
 
- public ArrayList<ArrayList<String>>  buttonReturn(String type){
+ public ArrayList<ArrayList<String>> buttonReturn(String type){
 //  	json_info_grabber jig = new json_info_grabber();
 //		ArrayList<ArrayList<String>> list = jig.info_grabber(type);
 	ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
 	JSONParser parser = new JSONParser();
-	File fil = new File(TYPE_FILES_PATH);
+	File fil = new File("data/data_files/types/"/*TYPE_FILES_PATH*/);
 	File[] files = fil.listFiles();
 	if(files !=null){
-			String toParse = TYPE_FILES_PATH+type+".json";
+			String toParse = "data/data_files/types/"/*TYPE_FILES_PATH*/+type+".json";
 			FileReader fr;
 			
 			JSONArray a;
@@ -70,13 +70,12 @@ public class BackendInterface {
 					JSONObject company = (JSONObject) o;
 					ArrayList<String> comp = new ArrayList<String>();
 					for(Object key : company.keySet()){
-						comp.add((String) company.get(key));
+						comp.add(/*(String)*/ company.get(key).toString());
 					}
 					list.add(comp);
 				}
 				
 			} catch (IOException | ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -85,11 +84,13 @@ public class BackendInterface {
  }
 
 	public ArrayList<String> searching(String company){
+		
 		ArrayList<String> list = new ArrayList<String>();
 		JSONParser parser = new JSONParser();
 		FileReader fil;
 		
 		JSONArray a;
+		
 		try {
 			
 			fil = new FileReader(_index_file+".json");
@@ -113,9 +114,9 @@ public class BackendInterface {
 			}
 			
 		} catch (IOException | ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return null;		
 		
 	}
