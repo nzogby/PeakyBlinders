@@ -32,7 +32,7 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 		SearchScreen _searchPanel = new SearchScreen();
 		StocksScreen _stockPanel = new StocksScreen();
 		StocksScreen _topLayer = new StocksScreen();
-		int theme_state = null;
+		int theme_state;
 		
 	
 		public Multipanels(int thm){
@@ -143,7 +143,7 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 					_searchPanel.setBackground(Color.decode("#7E6B8F"));
 					_menuPanel.setBackground(Color.decode("#96E6B3"));
 					_stockPanel.setBackground(Color.decode("#F2E94E"));
-					_scrollPanel.setBackground(color.blue);
+					_scrollPanel.setBackground(Color.blue);
 					break;
 				case 1:
 					_leftPanel.setBackground(Color.red);
@@ -159,6 +159,6 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 					break;
 			}
 			FileIO fi = new FileIO();
-			fi.writeStringToFile("setting.set", theme_state.toString());
+			fi.writeStringToFile("setting.set", "" + theme_state);
 		}
 }

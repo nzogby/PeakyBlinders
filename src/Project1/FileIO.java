@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class FileIO{
 				
-		public static Int readFileToInt(String filename){
+		public static int readFileToInt(String filename){
 				Scanner scan = null;
 				String content = "";
 				try{
@@ -18,7 +18,7 @@ public class FileIO{
 								System.err.println("File Not Found: "+filename);
 		}
 		finally{scan.close();}
-		return content.parseInt();
+		return Integer.parseInt(content);
 	}
 	
 	public static boolean writeStringToFile(String filename, String toOutput){
@@ -33,12 +33,13 @@ public class FileIO{
 								System.err.println("File Not Found and Cannot Be Created: "+filename);
 				}
 				finally{stream.close();}
-	
+				
+				return result;
 	}
 
 	public static void main(String[] args){
 				System.out.println(FileIO.writeStringToFile("settings.set","ex"));
-				System.out.println(FileIO.readFileToString("settings.set"));
+				System.out.println(FileIO.readFileToInt("settings.set"));
 	}
 }
 

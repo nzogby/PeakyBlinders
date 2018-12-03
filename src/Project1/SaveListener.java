@@ -1,11 +1,12 @@
 package Project1;
 
-import java.atw.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SaveListener implements ActionListener{
 		private Gui settings;
 		public SaveListener(Gui g){
-				setings = g;
+				settings = g;
 		}
 		@Override
 		public void actionPerformed(ActionEvent arg0){
