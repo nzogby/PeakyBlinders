@@ -36,6 +36,7 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 		
 	
 		public Multipanels(int thm){
+			System.out.println(thm);
 			theme_state = thm;
 			set_theme(theme_state);
 			JButton graphButton = new JButton("Graph");
@@ -63,7 +64,7 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 //Theme one
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
+
 					JFrame ThemeFrame = new JFrame("Themes Selector");
 					JPanel ThemePanel = new JPanel();
 					JButton Theme1 = new JButton("Theme 1");
@@ -110,7 +111,7 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 					ThemeFrame.setSize(500, 500);
 					ThemeFrame.setVisible(true);
 					ThemeFrame.setResizable(false);
-					ThemeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					//ThemeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					
 					
 				}

@@ -31,6 +31,7 @@ public class FileIO{
 				}
 				catch(FileNotFoundException e){
 								System.err.println("File Not Found and Cannot Be Created: "+filename);
+								System.out.println("HI");
 				}
 				finally{stream.close();}
 				
@@ -38,7 +39,7 @@ public class FileIO{
 	}
 
 	public static void main(String[] args){
-				System.out.println(FileIO.writeStringToFile("settings.set","ex"));
+				System.out.println(FileIO.writeStringToFile("settings.set",""+0));
 				System.out.println(FileIO.readFileToInt("settings.set"));
 	}
 }
