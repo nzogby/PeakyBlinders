@@ -126,7 +126,7 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 		
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			
+			//comment
 			JTextField searchBox = _searchPanel.getSearchBox();
 			String searchText = searchBox.getText();
 			JLabel searchedLabel = new JLabel(searchText);
