@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -13,8 +14,9 @@ public class SearchScreen extends JPanel{
 	
 	private JPanel _topLayer;
 	
-	private JLabel _searchtext;
-	private JTextField _editArea;
+	private JLabel _prompt;
+	private JTextField _searchBox;
+	private JButton _searchButton;
 	
 	public SearchScreen() {
 		
@@ -24,30 +26,36 @@ public class SearchScreen extends JPanel{
 		_topLayer.setLayout(new BoxLayout(_topLayer, BoxLayout.X_AXIS));
 		_topLayer.setBackground(Color.BLUE);
 		
-		_searchtext = new JLabel("Enter Stock Symbol");
-		_topLayer.add(_searchtext);
+		_prompt = new JLabel("Enter: ");
+		_topLayer.add(_prompt);
 		
-		_editArea = new JTextField("Search for your stock", 14);
+		_searchBox = new JTextField("Search for your stock", 14);
 		addListenerToSearchBox();
-		_topLayer.add(_editArea);
+		_topLayer.add(_searchBox);
+		
+		_searchButton = new JButton("Search");
+		_topLayer.add(_searchButton);
 		
 		add(_topLayer);
-		
 		
 	}
 	
 	public void addListenerToSearchBox() {
 		
-		_editArea.addMouseListener(new MouseAdapter() { // add MouseListener to the text box that clears the text when you click on it
+		_searchBox.addMouseListener(new MouseAdapter() { // add MouseListener to the text box that clears the text when you click on it
 		    
 			@Override
 		    public void mouseClicked(MouseEvent e) {
-		        _editArea.setText("");
+		        _searchBox.setText("");
 		    }
 		    
 		});
 		
 	}
+	
+	public JTextField getSearchBox() {return _searchBox;}
+	
+	public JButton getSearchButton() {return _searchButton;}
 		
 }
 

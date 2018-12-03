@@ -3,9 +3,6 @@ package Project1;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Font;
-import java.util.ArrayList;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,9 +11,14 @@ import javax.swing.JScrollPane;
 
 public class StocksScreen extends JPanel{
 
-	private JPanel _topLayer;
-	private JPanel _scrollPanel;
-	private JLabel Sectors1;
+	JPanel _topLayer;
+	JPanel _scrollPanel;
+	protected JLabel Sectors1;
+	JButton materialsButton = new JButton("Basic Materials");
+	JButton energyButton = new JButton("Energy");
+	JButton techButton = new JButton("Tech");
+
+
 	
 	public StocksScreen() {
 
@@ -26,7 +28,9 @@ public class StocksScreen extends JPanel{
 		
 		_scrollPanel = new JPanel();
 		_scrollPanel.setLayout(new BoxLayout(_scrollPanel, BoxLayout.Y_AXIS));
-		_scrollPanel.setBackground(new Color(0, 153, 0));
+		//_scrollPanel.setBackground(new Color(0, 153, 0));
+		_scrollPanel.setBackground(Color.decode("#F02D3A"));
+
 		JScrollPane scrollPane = new JScrollPane(_scrollPanel);
 		
 		initializeTopLayer();
@@ -35,7 +39,7 @@ public class StocksScreen extends JPanel{
 
 	}
 
-	public void initializeTopLayer() {
+	 public void initializeTopLayer() {
 		
 		Sectors1 = new JLabel("Sectors:");
 		
@@ -43,42 +47,23 @@ public class StocksScreen extends JPanel{
 		_topLayer.setLayout(new BoxLayout(_topLayer, BoxLayout.X_AXIS));
 		_topLayer.add((Sectors1),BorderLayout.WEST);
 		
-		JButton J = new JButton("Basic Materials");
-		_topLayer.add(J,BorderLayout.EAST);
+		materialsButton.addActionListener(new SectorListener(materialsButton.getText(), _scrollPanel));
+		_topLayer.add(materialsButton, BorderLayout.EAST);
 		
-		JButton K = new JButton("Energy");
-		K.setSize(4, 5); // set size of button saying "Sector 2"
-		K.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		_topLayer.add(K,BorderLayout.LINE_START);
+		energyButton.setSize(4, 5); // set size of button saying "Sector 2"
+		energyButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		energyButton.addActionListener(new SectorListener(energyButton.getText(), _scrollPanel));
+		_topLayer.add(energyButton, BorderLayout.LINE_START);
 		
-		JButton L = new JButton("Tech");
-		_topLayer.add(L,BorderLayout.CENTER);
-		
-		_topLayer.setBackground(new Color(0, 153, 0));
+		techButton.addActionListener(new SectorListener(techButton.getText(), _scrollPanel));
+		_topLayer.add(techButton, BorderLayout.CENTER);
+		_topLayer.setBackground(Color.decode("#F02D3A"));
+
+		//_topLayer.setBackground(new Color(0, 153, 0));
 		_topLayer.setVisible(true);
 		
 		add(_topLayer);
 		
 	}
 	
-	public void displayCompanyNames(ArrayList<ArrayList<String>> companyList) {
-		
-		for(int i = 0; i < companyList.size(); i++) {
-		
-			JLabel companyLabel;
-			String companyName = companyList.get(i).get(0);
-			String companyPrice = companyList.get(i).get(1);
-			
-			companyLabel = new JLabel(companyName + ", " + companyPrice, JLabel.CENTER);
-			_scrollPanel.add(companyLabel);
-
-			companyLabel.setVisible(true);
-			companyLabel.setFont(new Font("Monospaced", Font.BOLD, 16));
-			
-		}
-		
-		repaint();
-		
-	}
-
 }
