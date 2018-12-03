@@ -55,6 +55,8 @@ public class SearchScreen extends JPanel{
 	
 	public JTextField getSearchBox() {return _searchBox;}
 	
+	public String getTicker() {return _searchBox.getText();}
+	
 	public JButton getSearchButton() {return _searchButton;}
 		
 }

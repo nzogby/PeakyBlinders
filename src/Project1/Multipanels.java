@@ -25,9 +25,11 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 		JFrame _window = new JFrame("Stock Predictor");
 		JPanel _leftPanel = new JPanel();
 		JButton _themebutton = new JButton("Theme Select");
+		
 		MenuScreen _menuPanel = new MenuScreen();
 		SearchScreen _searchPanel = new SearchScreen();
 		StocksScreen _stockPanel = new StocksScreen();
@@ -47,8 +49,8 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 			_leftPanel.add(_searchPanel);
 			_leftPanel.add(_themebutton, BorderLayout.EAST);
 			
-			//_leftPanel.add(graphButton);
-			//graphButton.addActionListener(new GraphListener());
+			_leftPanel.add(graphButton);
+			graphButton.addActionListener(new GraphListener(_searchPanel));
 			
 			_leftPanel.add(_menuPanel);
 			_leftPanel.setVisible(true);
