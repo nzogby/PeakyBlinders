@@ -3,10 +3,10 @@ package Project1;
 import java.util.*;
 import java.io.*;
 //import com.eclipsesource.json.*;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import Project1.org.json.simple.JSONArray;
+import Project1.org.json.simple.JSONObject;
+import Project1.org.json.simple.parser.JSONParser;
+import Project1.org.json.simple.parser.ParseException;
 /*
  * Use this Class to interface with the backend stock data
  *
@@ -58,16 +58,28 @@ public class BackendInterface {
 	File[] files = fil.listFiles();
 	if(files !=null){
 			String toParse = TYPE_FILES_PATH+type+".json";
-			FileReader fr = new FileReader(toParse);
-			JSONArray a = (JSONArray) parser.parse(fr);
-			for(Object o :a){
-				JSONObject company = (JSONObject) o;
-				ArrayList<String> comp = new ArrayList<String>();
-				for(Object key : company.keySet()){
-					comp.add((String) company.get(key));
+			FileReader fr;
+			
+			JSONArray a;
+			try {
+				fr = new FileReader(toParse);
+				
+				a = (JSONArray) parser.parse(fr);
+				
+				for(Object o :a){
+					JSONObject company = (JSONObject) o;
+					ArrayList<String> comp = new ArrayList<String>();
+					for(Object key : company.keySet()){
+						comp.add((String) company.get(key));
+					}
+					list.add(comp);
 				}
-				list.add(comp);
+				
+			} catch (IOException | ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			
 	}
   return list;
  }
@@ -75,23 +87,37 @@ public class BackendInterface {
 	public ArrayList<String> searching(String company){
 		ArrayList<String> list = new ArrayList<String>();
 		JSONParser parser = new JSONParser();
-		FileReader fil = new FileReader(_index_file+".json");
-		JSONArray a = (JSONArray) parser.parse(fil);		
-		for(Object o : a){
-			JSONObject jo = (JSONObject) o;
-			if(jo.get("companyName").equals(company) || jo.get("symbol").equals(company)){
-				ArrayList<String> comp = new ArrayList<String>();
-				for(Object key: jo.keySet()){
-					comp.add((String) jo.get(key));
+		FileReader fil;
+		
+		JSONArray a;
+		try {
+			
+			fil = new FileReader(_index_file+".json");
+			
+			a = (JSONArray) parser.parse(fil);
+			
+			for(Object o : a){
+				JSONObject jo = (JSONObject) o;
+				if(jo.get("companyName").equals(company) || jo.get("symbol").equals(company)){
+					ArrayList<String> comp = new ArrayList<String>();
+					for(Object key: jo.keySet()){
+						comp.add((String) jo.get(key));
+					}
+					return comp;
 				}
-				return comp;
+				else{
+					ArrayList<String> fail = new ArrayList<String>();
+					fail.add("fail");fail.add(company);
+					return fail;
+				}
 			}
-			else{
-				ArrayList<String> fail = new ArrayList<String>();
-				fail.add("fail");fail.add(company);
-				return fail;
-			}
+			
+		} catch (IOException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return null;		
+		
 	}
 	
 }
