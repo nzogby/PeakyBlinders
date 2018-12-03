@@ -114,12 +114,14 @@ public class BackendInterface {
 			a = (JSONArray) parser.parse(fil);
 			
 			for(Object o : a){
-				JSONObject jo = (JSONObject) o;
+				for(Object inside : (JSONObject) o){
+				JSONObject jo = (JSONObject) inside;
 				if(jo.get("companyName").equals(company) || jo.get("symbol").equals(company)){
 					ArrayList<String> comp = new ArrayList<String>();
 					for(Object key: jo.keySet()){
 						comp.add((String) jo.get(key));
 					}
+				}
 					return comp;
 				}
 				else{

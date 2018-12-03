@@ -132,9 +132,12 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 			JTextField searchBox = _searchPanel.getSearchBox();
 			String searchText = searchBox.getText();
 			JLabel searchedLabel = new JLabel(searchText);
-
+			BackendInterface b = new BackendInterface();
+			b.searching(searchText);
+			if(b.get(5) != null)	String company = b.get(5);
+			else String company = "Incorrect Company Name";
 			_menuPanel.getPanel().removeAll();
-			_menuPanel.getPanel().add(searchedLabel, BorderLayout.SOUTH);
+			_menuPanel.getPanel().add(company, BorderLayout.SOUTH);
 			_menuPanel.getPanel().revalidate();
 			_menuPanel.getPanel().repaint();
 			
