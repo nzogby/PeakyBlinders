@@ -4,9 +4,8 @@ import java.io.*;
 import java.util.Scanner;
 
 public class FileIO{
-				@param filename
-				@return
-		public static String readFileToString(String filename){
+				
+		public static Int readFileToInt(String filename){
 				Scanner scan = null;
 				String content = "";
 				try{
@@ -16,23 +15,18 @@ public class FileIO{
 						}
 				}
 				catch(FileNotFoundException e){
-								System.err.println(File Not Found: "+filename);
+								System.err.println("File Not Found: "+filename);
 		}
 		finally{scan.close();}
-		return content;
+		return content.parseInt();
 	}
 	
-
-	@param filename
-	@param toOutput
-	@return
-
 	public static boolean writeStringToFile(String filename, String toOutput){
 				PrintStream stream = null;
 				boolean result = false;
 				try{
 								stream = new PrintStream(filename);
-								stream.format(%s%n,toOutput);
+								stream.format("%s%n",toOutput);
 								result = true;
 				}
 				catch(FileNotFoundException e){

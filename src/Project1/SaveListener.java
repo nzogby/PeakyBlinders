@@ -2,7 +2,7 @@ package Project1;
 
 import java.atw.event.*;
 
-public class SaveListener implemnets ActionListener{
+public class SaveListener implements ActionListener{
 		private Gui settings;
 		public SaveListener(Gui g){
 				setings = g;

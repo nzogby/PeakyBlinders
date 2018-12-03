@@ -32,11 +32,12 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 		SearchScreen _searchPanel = new SearchScreen();
 		StocksScreen _stockPanel = new StocksScreen();
 		StocksScreen _topLayer = new StocksScreen();
-		
+		int theme_state = null;
 		
 	
-		public Multipanels(){
-			
+		public Multipanels(int thm){
+			theme_state = thm;
+			set_theme(theme_state);
 			JButton graphButton = new JButton("Graph");
 			
 			_window.add(_stockPanel, BorderLayout.EAST);
@@ -70,13 +71,8 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-
-							_leftPanel.setBackground(Color.decode("#A3D9FF"));
-							_searchPanel.setBackground(Color.decode("#7E6B8F"));
-							_menuPanel.setBackground(Color.decode("#96E6B3"));
-							_stockPanel.setBackground(Color.decode("#F2E94E"));
-							_scrollPanel.setBackground(Color.blue);
-
+							theme_state = 0;
+							set_theme(theme_state);
 						}
 						
 					});
@@ -87,14 +83,8 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-
-							_scrollPanel.setBackground(Color.decode("#F02D3A"));
-						_leftPanel.setBackground(Color.red);
-
-							_searchPanel.setBackground(Color.decode("#DD0426"));
-							_menuPanel.setBackground(Color.decode("#9197AE"));
-							_searchPanel.setBackground(Color.decode("#273043"));
-							
+							theme_state = 1;
+							set_theme(theme_state);	
 						}
 						
 					});
@@ -105,12 +95,8 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 
 						@Override
 						public void actionPerformed(ActionEvent e) {
-							
-							_leftPanel.setBackground(Color.decode("#0197F6"));
-							_searchPanel.setBackground(Color.decode("#02182B"));
-							_menuPanel.setBackground(Color.decode("#7FCDCD"));
-							_stockPanel.setBackground(Color.blue);
-							
+							theme_state = 2;
+							set_theme(theme_state);	
 						}			
 						
 						
@@ -150,5 +136,29 @@ public class Multipanels extends StocksScreen implements ActionListener  {
 			_menuPanel.getPanel().repaint();
 			
 		}
-		
+		public void set_theme(int theme_state){
+			switch(theme_state){
+				case 0: 
+					_leftPanel.setBackground(Color.decode("#A3D9FF"));
+					_searchPanel.setBackground(Color.decode("#7E6B8F"));
+					_menuPanel.setBackground(Color.decode("#96E6B3"));
+					_stockPanel.setBackground(Color.decode("#F2E94E"));
+					_scrollPanel.setBackground(color.blue);
+					break;
+				case 1:
+					_leftPanel.setBackground(Color.red);
+					_searchPanel.setBackground(Color.decode("#DD0426"));
+					_menuPanel.setBackground(Color.decode("#9197AE"));
+					_scrollPanel.setBackground(Color.decode("#F02D3A"));
+					break;
+				case 2:
+					_leftPanel.setBackground(Color.decode("#0197F6"));
+					_searchPanel.setBackground(Color.decode("#02182B"));
+					_menuPanel.setBackground(Color.decode("#7FCDCD"));
+					_stockPanel.setBackground(Color.blue);
+					break;
+			}
+			FileIO fi = new FileIO();
+			fi.writeStringToFile("setting.set", theme_state.toString());
+		}
 }
