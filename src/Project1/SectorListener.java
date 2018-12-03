@@ -56,10 +56,11 @@ public class SectorListener implements ActionListener{
 		for(int i = 0; i < companyList.size(); i++) {
 		
 			JLabel companyLabel;
-			String companyName = companyList.get(i).get(0);
-			String companyPrice = companyList.get(i).get(1);
+			String companyPrice = companyList.get(i).get(0);
+			String companyInfo = companyList.get(i).get(5);
 			
-			companyLabel = new JLabel(companyName + ", " + companyPrice, JLabel.CENTER);
+			companyLabel = new JLabel(companyInfo + ", " + companyPrice + ";", JLabel.CENTER);
+			
 			_scrollPanel.add(companyLabel);
 
 			companyLabel.setVisible(true);

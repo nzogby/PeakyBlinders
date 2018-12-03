@@ -69,10 +69,26 @@ public class BackendInterface {
 				for(Object o :a){
 					JSONObject company = (JSONObject) o;
 					ArrayList<String> comp = new ArrayList<String>();
+					
 					for(Object key : company.keySet()){
-						comp.add(/*(String)*/ company.get(key).toString());
+						
+						comp.add( company.get(key).toString() );
+						if( !(company.get(key) instanceof Double) ) {
+							
+							for(Object key2 : ( (JSONObject)company.get(key) ).keySet() ){
+								
+								//System.out.println( ( (JSONObject)company.get(key) ).get(key2).toString() );
+								comp.add( ( (JSONObject)company.get(key) ).get(key2).toString() );
+								
+							}
+							
+						}
+						
 					}
+					
+					//for(int i = 0; i < comp.size(); i++) {System.out.println(comp.get(i));}
 					list.add(comp);
+					
 				}
 				
 			} catch (IOException | ParseException e) {
